@@ -1,0 +1,73 @@
+
+  h2{
+  text-align: center;
+  font-style: italic;
+  margin-top: 30px;
+}
+
+.movie{
+  width: 500px;
+  margin: auto;
+  background-color: #eee;
+  padding: 20px;
+  border-radius: 5px;
+
+  .action{
+    display: flex;
+    justify-content: space-around;
+    button{
+      padding: 10px;
+      border: none;
+      outline: none;
+      border-radius: 5px;
+      cursor: pointer;
+
+    }
+    .back{
+      background-color: aqua;
+    }
+    .delete{
+      background-color: red;
+      color: #fff;
+    }
+
+  }
+}
+
+.rating{
+  padding: 40px;
+  .create-rating{
+    width: 400px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    input {
+      padding: 10px;
+    }
+    button{
+      padding: 10px;
+      border: none;
+      outline: none;
+      border-radius: 5px;
+      cursor: pointer;
+      background-color: aqua;
+    }
+  }
+
+  .movie-ratings{
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    .rating-card{
+      width: 300px;
+      height: auto;
+      background-color: #eee;
+      border-radius: 5px;
+      padding: 20px;
+
+    }
+  }
+
+}

@@ -1,0 +1,45 @@
+<div class="container">
+  <h2>user dashboard</h2>
+
+  <div class="search-container">
+    <input type="text" [(ngModel)]="searchTitle" placeholder="Search movie by title..." />
+    <button (click)="searchMovie()">Search</button>
+  </div>
+
+  <div *ngIf="searchedMovies.length>0" class="list">
+    <h3>list of searched </h3>
+    <div class="list-cont">
+
+      <div *ngFor="let movie of searchedMovies" class="movie-card">
+        <img [src]="movie.poster" alt="{{ movie.title }}" />
+        <h3>{{ movie.title }}</h3>
+        <p>{{ movie.year }}</p>
+        <p>Rating: {{ movie.rating_value }}</p>
+        <div class="action">
+
+          <button [routerLink]="['/movies', movie.id]">View Details</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div class="list">
+    <h3>list of all movies from app DB</h3>
+    <div class="list-cont">
+
+      <div *ngFor="let movie of movies" class="movie-card">
+        <img [src]="movie.poster" alt="{{ movie.title }}" />
+        <h3>{{ movie.title }}</h3>
+        <p>{{ movie.year }}</p>
+        <p>Rating: {{ movie.rating_value }}</p>
+        <div class="action">
+
+          <button [routerLink]="['/movies', movie.id]">View Details</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

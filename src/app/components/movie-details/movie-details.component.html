@@ -1,0 +1,34 @@
+
+<h2>movie-details works!</h2>
+<div *ngIf="movie" class="movie">
+  <h3>{{ movie.title }}</h3>
+  <img [src]="movie.poster" alt="{{ movie.title }}" width="200">
+  <p><strong>Year:</strong> {{ movie.year }}</p>
+  <p><strong>Genre:</strong> {{ movie.genre }}</p>
+  <p><strong>Director:</strong> {{ movie.director }}</p>
+  <p><strong>Actors:</strong> {{ movie.actors }}</p>
+  <p><strong>Plot:</strong> {{ movie.plot }}</p>
+  <p><strong>Rating:</strong> {{ movie.rating_value }}/5</p>
+  <div class="action">
+
+    <button class="back" (click)="goBack()">Back to Movies</button>
+    <button *ngIf="isAdmin" class="delete" (click)="delete(movie.id)">delete this movie</button>
+  </div>
+
+</div>
+<div class="rating">
+  <div class="create-rating">
+    <input type="number" min="1" max="5" [(ngModel)]="rating_value" placeholder="rating value between 1 to 5 " />
+    <textarea name="message" rows="5" [(ngModel)]="message"></textarea>
+    <button (click)="rateMovie(movie.id)">Rate</button>
+  </div>
+
+
+  <div class="movie-ratings">
+    <div class="rating-card" *ngFor="let rating of movie?.ratings">
+      <div class="username">{{rating.user?.username}}</div>
+      <div class="value">rating value : {{rating.rating}}</div>
+      <div class="message">{{rating.message}}</div>
+    </div>
+  </div>
+</div>

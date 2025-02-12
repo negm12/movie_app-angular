@@ -1,0 +1,67 @@
+<div class="container">
+  <h2>Admin Dashboard</h2>
+
+  <div class="search-container">
+
+    <input type="text" [(ngModel)]="searchTitle" placeholder="Search movie by title..." />
+    <input type="text" [(ngModel)]="movieId" placeholder="Search movie by id..." />
+    <button (click)="searchMovie()">Search</button>
+  </div>
+
+  <div *ngIf="OMDSearchedMovies.length>0"  class="list">
+
+    <h3>the searched movies from OMD</h3>
+    <div class="action">
+
+      <button (click)="addMovies(selectedMoviesFromSearch)" *ngIf="selectedMoviesFromSearch.length>0" >add the selected movies</button>
+      <button *ngIf="select_all_search" (click)="selectAllSearch()">select all</button>
+      <button *ngIf="!select_all_search" (click)="unSelectAllSearch()">unSelect all</button>
+    </div>
+    <div class="list-cont">
+
+      <div *ngFor="let movie of OMDSearchedMovies" class="movie-card" [ngClass]="{'selected':movie.isSelected}">
+        <img [src]="movie.poster" alt="{{ movie.title }}" />
+        <h3>{{ movie.title }}</h3>
+        <p>{{ movie.year }}</p>
+        <div class="action">
+
+          <button (click)="addMovie(movie)">add to DB</button>
+          <button *ngIf="!movie.isSelected"  (click)="selectMovieFromSearch(movie)">select</button>
+          <button *ngIf="movie.isSelected" (click)="selectMovieFromSearch(movie)">UnSelect</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="list" *ngIf="movies.length>0">
+
+    <h3>movies list from the app DB</h3>
+
+    <div class="action">
+
+      <button (click)="deleteMovies(selectedMovies)" *ngIf="selectedMovies.length>0" >delete the selected movies</button>
+      <button *ngIf="select_all" (click)="selectAll()">select all</button>
+      <button *ngIf="!select_all" (click)="unSelectAll()">unSelect all</button>
+    </div>
+
+    <div class="list-cont">
+
+      <div *ngFor="let movie of movies" class="movie-card" [ngClass]="{'selected':movie.isSelected}">
+        <img [src]="movie.poster" alt="{{ movie.title }}" />
+        <h3>{{ movie.title }}</h3>
+        <h5>rating : {{ movie.rating_value }}</h5>
+        <p>year : {{ movie.year }}</p>
+        <div class="action">
+
+          <button [routerLink]="['/movies', movie.id]">View Details</button>
+          <button (click)="deleteMovie(movie.id)">Delete</button>
+          <button *ngIf="!movie.isSelected"  (click)="selectMovie(movie)">select</button>
+          <button *ngIf="movie.isSelected" (click)="selectMovie(movie)">UnSelect</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="movies.length<=0">
+    <h2>your data base is empty  !............</h2>
+  </div>
+</div>
