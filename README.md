@@ -28,10 +28,11 @@ ng serve
 
 ## Sgn in or login
 - **Admin Credentials:**
-  -Username: admin
-  -Password: admin123
+  -Username: admin.
+  -Password: admin123.
 
 - **User Credentials:**
-  -Username: user
-  -Password: user123
+  -Username: user.
+  -Password: user123.
+  
 **or you can create auser account for you if you hav not one**
